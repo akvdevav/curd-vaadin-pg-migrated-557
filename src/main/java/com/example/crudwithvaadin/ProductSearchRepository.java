@@ -29,7 +29,7 @@ public interface ProductSearchRepository extends JpaRepository<ProductSearch, In
                    "FROM public.products_search p " +
                    "WHERE p.title_tsv @@ to_tsquery('english', :searchTerm)",
            nativeQuery = true) // Indicates that this is a native SQL query
-    List<ProductSearch> searchText(@Param("searchTerm") String searchTerm;
+    List<ProductSearch> searchText(@Param("searchTerm") String searchTerm);
 
 
      @Query(value = "SELECT count(*) FROM public.products_search p WHERE p.title_tsv @@ to_tsquery('english', :searchTerm)",
