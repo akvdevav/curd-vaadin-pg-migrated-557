@@ -34,8 +34,7 @@ public interface ProductSearchRepository extends JpaRepository<ProductSearch, In
 
      @Query(value = "SELECT count(*) FROM public.products_search p WHERE p.title_tsv @@ to_tsquery('english', :searchTerm)",
            nativeQuery = true)
-    Long countText(@Param("searchTerm") String searchTerm;
-
+    Long countText(@Param("searchTerm") String searchTerm);
 
     // @Modifying
     // @Transactional
