@@ -1,0 +1,33 @@
+# manifest.yml
+
+applications:
+- name: curd-pg # Give your application a unique name
+  memory: 1G                   # Allocate appropriate memory (e.g., 1G, 2G)
+  instances: 1                 # Number of instances to run
+  path: target/crud-with-vaadin-initial-0.0.1-SNAPSHOT.jar  # Path to your compiled application JAR
+                               # Make sure this path is correct for your project
+  buildpack: java_buildpack_offline # Specify the offline Java buildpack
+  services: 
+  - postgresdb  
+
+  env:
+    # --- Java Buildpack Configuration for Java 21 ---
+    # This environment variable tells the Java Buildpack which JRE version to use.
+    # The '21.+' pattern instructs it to use any available patch version of Java 21.
+    JAVA_OPTS: -Djava.security.egd=file:///dev/urandom
+    SPRING_PROFILES_ACTIVE: cloud,on-demand
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 21.+ } }'
+    JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{ enabled: false }'
+    # VAADIN_PRODUCTION_MODE: true
+
+    # --- Optional: Common Java/Spring Boot Configurations ---
+    # Set Spring profiles (useful for cloud-specific configurations)
+    # SPRING_PROFILES_ACTIVE: cloud
+
+    # If your application uses the `server.port` property, Spring Boot typically
+    # picks up the Cloud Foundry `$PORT` environment variable automatically.
+    # However, if you explicitly set it or have issues, you can ensure it uses $PORT.
+    # JAVA_OPTS: -Dserver.port=$PORT
+
+    # You might need to increase heap space for larger applications
+    # JAVA_OPTS: -Xmx768M -Xms768M -Dserver.port=$PORT
