@@ -1,11 +1,9 @@
 package com.example.crudwithvaadin;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "customers")
 public class Customer {
 
 	@Id

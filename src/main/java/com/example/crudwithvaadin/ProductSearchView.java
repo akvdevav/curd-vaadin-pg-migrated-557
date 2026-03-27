@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate; // Import JdbcTemplate
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 

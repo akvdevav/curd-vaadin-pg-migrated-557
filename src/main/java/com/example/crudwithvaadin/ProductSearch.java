@@ -1,38 +1,37 @@
-// ProductSearch.java
 package com.example.crudwithvaadin;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.math.BigDecimal; // Import for BigDecimal
+import java.math.BigDecimal;
 
 /**
  * JPA Entity for the products_search table.
  * This entity maps the columns from the PostgreSQL table to Java fields.
  */
 @Entity
-@Table(name = "products_search") // Specifies the table name in the database
+@Table(name = "products_search")
 public class ProductSearch {
 
-    @Id // Denotes the primary key
-    @Column(name = "prod_id") // Maps to the 'prod_id' column
+    @Id
+    @Column(name = "prod_id")
     private Integer prodId;
 
-    @Column(name = "category") // Maps to the 'category' column
+    @Column(name = "category")
     private Integer category;
 
-    @Column(name = "title") // Maps to the 'title' column
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "actor") // Maps to the 'actor' column
+    @Column(name = "actor")
     private String actor;
 
-    @Column(name = "price") // Maps to the 'price' column
-    private BigDecimal price; // Using BigDecimal for numeric(38,2)
+    @Column(name = "price")
+    private BigDecimal price;
 
     @Column(name= "title_tsv")
-    private String title_tsv; // Mapped for completeness, but not typically used directly for search logic in Java
+    private String title_tsv;
 
     /**
      * Default constructor required by JPA.
@@ -72,7 +71,6 @@ public class ProductSearch {
         return title;
     }
 
-    // Renamed this getter for consistency with JavaBean naming conventions (optional, but good practice)
     public String getTitle_tsv() {
         return title_tsv;
     }
@@ -119,7 +117,7 @@ public class ProductSearch {
                ", title='" + title + '\'' +
                ", actor='" + actor + '\'' +
                ", price=" + price +
-               ", title_tsv='" + title_tsv + '\'' + // Fixed typo here
+               ", title_tsv='" + title_tsv + '\'' +
                '}';
     }
 }
